@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+
+</head>
+
+<body>
+
+      <!--   estoy incluyendo un header-->
+      <%-include('partials/header')%>
+     <!--   estoy incluyendo un header-->
+    
+     <!-- recomendaciones -->
+ <div class="main"> 
+     <h1> Recomendaciones</h1>
+        <ul>
+            <%for (let i=0; i<movies.length; i++){ %>
+                <li>
+                    <a href="/movies/detail/<%=movies[i].id%> "> 
+                    <%= movies[i].title %> </a> 
+                </li>
+            <% } %>
+        </ul>
+              
+        <button class="button-detail" type="button"> Borrar </button>
+        <button class="button-detail"type="button"> Modificar </button>
+    </div>  
+
+     <!--   estoy incluyendo un header-->
+     <%-include('partials/footer')%>
+     <!--   estoy incluyendo un header-->
+</body>
+</html>

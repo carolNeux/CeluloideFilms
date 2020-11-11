@@ -1,0 +1,57 @@
+body {
+  background-color: RGB(216, 191, 216);
+  padding: 50px;
+  font: 16px 'Lucida Grande', Helvetica, Arial, sans-serif;
+  color: indigo;
+}
+
+.main {
+  padding-top: 10rem;
+  width: 80%;
+}
+.main-index {
+  margin: 20rem;
+  padding-top: 40rem;
+}
+
+p {
+  margin-bottom: 1.6em;
+  margin-top: 3rem;
+}
+
+.button-detail {
+  display: flex;
+  width: 40%;
+  margin: 10px;
+  border-radius: 20px;
+  text-align: center;
+  justify-content: center;
+  background-color: #333;
+  color: RGB(216, 191, 216);
+}
+.button-detail:hover {
+  background-color: hotpink;
+  color: white;
+  cursor: pointer;
+}
+
+.button-search {
+  display: flex;
+  width: 20%;
+  margin-top: 20px;
+  border-radius: 20px;
+  text-align: center;
+  justify-content: center;
+  background-color: #333;
+  color: RGB(216, 191, 216);
+}
+.button-search:hover {
+  background-color: hotpink;
+  color: white;
+  cursor: pointer;
+}
+
+a {
+  color: indigo;
+  text-decoration: none;
+}

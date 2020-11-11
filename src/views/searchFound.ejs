@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="/stylesheets/style.css">
+
+</head>
+
+<body>
+
+    <!--   estoy incluyendo un header-->
+    <%-include('partials/header')%>
+    <!--   estoy incluyendo un header-->
+       <div class="main">
+           
+        <h1>Busqueda de Películas</h1><br>
+
+        <form action="search" method="POST"> 
+        <input type="text" name="title">
+        <button class="button-search" type="submit"> Buscar </button>
+        </form>
+    </div>
+
+ <!--   // a donde me lleva el boton de buscar ????  -->
+<h3> Esta es la película que buscas :</h3>
+ 
+    <% movies.forEach(movie => { %>
+            <div class="">
+              <a href="/movies/detail/<%= movie.id %>"><h2> <%= movie.title %></h2> </a>
+            </div>             
+  
+    <% }) %>
+
+
+        
+      <!--   estoy incluyendo un header-->
+      <%-include('partials/footer')%>
+      <!--   estoy incluyendo un header-->  
+</body>
+</html>
