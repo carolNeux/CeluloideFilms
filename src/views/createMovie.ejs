@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/createMovie.css">
+
+</head>
+
+<body>
+    <!--   estoy incluyendo un header-->
+    <%-include('partials/header')%>
+    <!--   estoy incluyendo un header-->
+    
+    <!-- product detail -->
+    
+   <div class="main"> 
+    <h2 class="title">Agrega tu película</h2>
+    <div class="form_center"> 
+      <main class="form">
+       
+          <form action="/movies/create" method="POST"><br>
+
+        <label for="title">Título</label><br>
+        <input type="text" name="title"><br>
+
+        <label for="rating">Rating</label><br>
+        <input type="text" name="rating"><br>
+
+        <label for="awards">Premios</label><br>
+        <input type="number" name="awards"><br>
+
+        <label for="release_date">Release Date</label><br>
+        <input type="date" name="release_date"><br>
+        
+        <label for="length">Duracion</label><br>
+        <input type="text" name="length"><br>
+
+        <label for="genre_id">Genero</label><br>
+        <select name="genre_id">
+        <%generos.forEach(genero => { %>
+            <option value="<%=genero.id%>"><%=genero.name %></option>
+            <% })%> 
+        </select><br>
+        
+        
+     
+        
+              
+        <button class="button-detail" type="submit"> Crear </button>
+        <button class="button-detail"type="button"> Modificar </button>
+    </div>
+     </form> 
+    </main>
+
+    </div>
+     <!--   estoy incluyendo un header-->
+     <%-include('partials/footer')%>
+     <!--   estoy incluyendo un header-->
+</body>
+</html>

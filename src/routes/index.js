@@ -18,4 +18,6 @@ router.get('/movies', moviesController.all);
 router.get('/actor', actorsController.all);
 router.get('/episode', episodesController.all);
 
+
+
 module.exports = router;

@@ -21,7 +21,14 @@
 
         <form action="search" method="POST"> 
         <input type="text" name="title">
-        <input type="text" name="order" id="order">
+        
+        <select name="order">
+            <option value="titleasc">Titulo A-Z</option>
+            <option value="titledesc">Titulo Z-A</option>
+            <option value="ratingasc">Menor Rating</option>
+            <option value="ratingdec">Mayor Rating</option>
+            <option value="dategdec">Ultimos Lanzamientos</option>
+        </select>
         <button class="button-search" type="submit"> Buscar </button>
         </form>
     </div>

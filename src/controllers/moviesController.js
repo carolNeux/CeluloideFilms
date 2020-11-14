@@ -1,6 +1,6 @@
 //---Primero traemos al modelo que queremos usar___Se escribe en singular y con MAyuscula//
-
-const {Movie} = require('../database/models')
+const db= require('../dataBase/models');
+const {Movie, Genre, Actor} = require('../database/models')
 const{Op}=require('sequelize')
 //const Op = require('sequelize')//
 
@@ -9,9 +9,10 @@ module.exports = {
 
      all: async(req, res) =>{
         try {
-           const movies= await Movie.findAll()
+           const movies= await Movie.findAll({include:['Genre']});
+           // res.json(movies); 
            
-           res.render('moviesList',{movies})
+          res.render('moviesList',{movies})
          } catch(error) {
             console.log(error);
          }   
@@ -75,19 +76,41 @@ module.exports = {
       try{ const movies = await Movie.findAll({
          where:{
            title:{[Op.like]:'%'+req.body.title+'%'}
-         }
+         },
+         //falta poner codigo para ordenar //
       })
                 
        res.render('searchFound',{movies})
       } catch(error) {
        console.log(error);
     }   
-   }
+   },
+
+/** Aqui comienza el TP 2 */
+
+create: async(req,res)=>{
+   try{    
+  const generos = await Genre.findAll()
+res.render('createMovie.ejs', {generos});
+}catch(error) {
+   console.log(error)
+}
+},
+
+store: async(req,res)=>{
+ try{ const newMovie= await Movie.create(req.body)
+
+   }catch(error) {
+   console.log(error)
+   }  },
+
+
+update: async(req,res)=>{
+
+},
+change: async(req,res)=>{
+
+},
+
 }
 
-/*si quiero seleccionar solo uno lo armo fon findOne de la siguiente manera
-despues de:
-const movieJson =await Movie.findOne({
- attributes:['title', 'length']
-   where: {title:'Avatar'}   
-})   */

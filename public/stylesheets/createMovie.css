@@ -1,0 +1,46 @@
+body {
+  background-color: RGB(216, 191, 216);
+  padding: 50px;
+  font: 16px 'Lucida Grande', Helvetica, Arial, sans-serif;
+  color: indigo;
+}
+
+.main {
+  padding-top: 8rem;
+  padding-left: 8rem;
+}
+.form {
+  display: flex;
+  text-align: center;
+  align-content: center;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  padding-left: 100px;
+  margin: 20px;
+  width: 300px;
+}
+.title {
+  padding-left: 2rem;
+}
+input {
+  border: none;
+  margin-bottom: 8px;
+}
+.select {
+  color: red;
+}
+
+.button-detail {
+  display: flex;
+  width: 40%;
+  margin: 10px 35px;
+  border-radius: 20px;
+  text-align: center;
+  justify-content: center;
+  background-color: #333;
+  color: RGB(216, 191, 216);
+}
+.button-detail:hover {
+  background-color: hotpink;
+  color: white;
+  cursor: pointer;
+}

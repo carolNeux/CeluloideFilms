@@ -8,9 +8,15 @@ module.exports = (sequelize, DataTypes) => {
        last_name:DataTypes.STRING,
        rating:DataTypes.DECIMAL,
        favorite_movie_id:DataTypes.INTEGER,
-   }, {                            /*Opciones si no ponemos created_at y updated_at nos va a tratar de llenar esa columna 
+ });
+     actor.associate = (models=>{
+     actor.belongsToMany(models.Movie,{
+     through:'actor_movie'
+    });
+   });
+   { timestamps: false                         /*Opciones si no ponemos created_at y updated_at nos va a tratar de llenar esa columna 
                                      por eso le ponemos el timestamps*/
-    timestamps: false
-   })
-   return actor
+
+   }
+   return actor;
 }

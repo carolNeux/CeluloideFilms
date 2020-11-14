@@ -11,7 +11,12 @@ router.get('/detail/:id', moviesController.detail);
 router.get('/new', moviesController.newMovie);
 router.get('/recommended',moviesController.recommended);
 router.get('/search', moviesController.searchView);
-//router.get('/search', moviesController.search);//
 router.post('/search', moviesController.search);
+
+//____ Sigo con create, update_____//
+router.get('/create',moviesController.create);
+router.post('/create', moviesController.store);
+router.get('/update/:id', moviesController.update);
+router.post('/update/:id', moviesController.change);
 
 module.exports = router
