@@ -19,20 +19,30 @@
    <div class="main"> 
        
         <h2 ><%=movies.title%></h2>
-        <ul>
-            <li>El rating es <%=movies.rating%> </li>
-            <li>Ganó <%=movies.awards%> premios</li>
-            <li>Su duración es de<%=movies.length%></li>
-            <li>Fue lanzada <%=movies.release_date%></li>
+            <ul>
+                 <li>El rating es <%=movies.rating%> </li>
+                 <li>Ganó <%=movies.awards%> premios</li>
+                 <li>Su duración es de<%=movies.length%></li>
+                 <li>Fue lanzada <%=movies.release_date%></li>
 
-        </ul>
+            </ul>
               
-        <button class="button-detail" type="button"> Borrar </button>
-        <button class="button-detail"type="button"> Modificar </button>
+          
+        <a class="button-detail"  href="/movies/update/<%=movies.id%>">Modificar</a>
+        
+            
+       
+        
+        <form action="/movies/delete/<%=movies.id%>" method="POST">  
+        <button class="button-detail" type="submit"> Borrar </button>
+        </form>
 
     </div>
-     <!--   estoy incluyendo un header-->
+
+     <!--   estoy incluyendo un footer-->
+     <div class="footer">  
      <%-include('partials/footer')%>
-     <!--   estoy incluyendo un header-->
+     </div>
+     <!--   estoy incluyendo un footer-->
 </body>
 </html>

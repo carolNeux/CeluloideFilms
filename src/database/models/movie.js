@@ -1,22 +1,22 @@
 const {sequelize, DataTypes} = require('sequelize');
 const actor = require('./actor');
 
-//const {DataTypes, where} = require('sequelize/types')
+//const {DataTypes, where} = require('sequelize/types')Lo digo todo junto arriba
 
 module.exports = (sequelize, DataTypes) => {
     //vamos a usar el metodo define//
     //lo que define necesita es primero un string, luego un objeto que representa a cada columna que tenemos en la base de datos en la table de usuraios si traemos'Users' //
-   const movie = sequelize.define('Movie', {
+   const Movie = sequelize.define('Movie', {
        title:DataTypes.STRING,
-       rating:DataTypes.DECIMAL,
+       rating:DataTypes.INTEGER,
        awards:DataTypes.INTEGER,
        release_date:DataTypes.DATEONLY, //only es sin hora//
        length:DataTypes.INTEGER,
        genre_id:DataTypes.INTEGER
  });
-       movie.associate = (models=>{
-       movie.belongsTo(models.Genre);
-       movie.belongsToMany(models.Actor, {
+       Movie.associate = (models=>{
+       Movie.belongsTo(models.Genre);
+       Movie.belongsToMany(models.Actor, {
            as:'actores', through:'actor_movie'
        });
       })
@@ -25,5 +25,5 @@ module.exports = (sequelize, DataTypes) => {
                                      por eso le ponemos el timestamps*/
  
         }
-   return movie
+   return Movie
 }

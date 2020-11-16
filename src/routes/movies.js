@@ -13,10 +13,18 @@ router.get('/recommended',moviesController.recommended);
 router.get('/search', moviesController.searchView);
 router.post('/search', moviesController.search);
 
-//____ Sigo con create, update_____//
+//____ Sigo con create_____//
 router.get('/create',moviesController.create);
 router.post('/create', moviesController.store);
-router.get('/update/:id', moviesController.update);
+
+//____ Sigo con  update_____//
+router.get('/update/:id', moviesController.update); //---modificar
 router.post('/update/:id', moviesController.change);
+
+//____ Sigo con  borrar//
+
+router.post('/delete/:id', moviesController.delete);
+
+
 
 module.exports = router

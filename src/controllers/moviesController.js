@@ -23,6 +23,7 @@ module.exports = {
     
         try {
            let movies = await Movie.findByPk(req.params.id)
+           include:[{association:'Genre'},{association:'Actor'} ]
            res.render('movieDetail', {movies})
         } catch(error) {
          console.log(error);
@@ -91,26 +92,61 @@ module.exports = {
 create: async(req,res)=>{
    try{    
   const generos = await Genre.findAll()
-res.render('createMovie.ejs', {generos});
-}catch(error) {
-   console.log(error)
-}
+  const actores = await Actor.findAll()
+
+   res.render('createMovie', {generos,actores});
+      }catch(error) {
+      console.log(error)
+      }
 },
 
 store: async(req,res)=>{
- try{ const newMovie= await Movie.create(req.body)
+ try{ let newMovie= await Movie.create(req.body)
+   await newMovie.addActores(req.body.actores)
 
+   res.redirect('/movie');
    }catch(error) {
    console.log(error)
    }  },
-
+// no lo esta redireccionando, agrega la peli, pero no me muestra la pagina de lista de pelis
+//pero si voy a movies la peli esta agregada
 
 update: async(req,res)=>{
+ 
+const movieId =req.params.id;
+const toEdit = await Movie.findByPk(movieId,{include:['Genre','actores']});
+const generos = await Genre.findAll()
+const actores = await Actor.findAll()
 
+//res.redirect('movieList' + req.params.id)
+//quiero que me mande al detalle de la pelicula que modifique
+res.render('updateMovie',{toEdit, generos, actores});
 },
-change: async(req,res)=>{
 
+
+change: async(req,res)=>{   
+ const movieId =req.params.id;
+ const changedMovie = await Movie.findByPk(movieId,{include:['Genre','actores']})
+ await changedMovie.removeActores(changedMovie.actores);
+ await changedMovie.addActores(req.body.actores);
+await changedMovie.update(req.body)
+
+   res.redirect('/movies')
 },
+
+delete: async (req,res) => {
+   try {
+       const movieId = req.params.id;
+       const toDelete = await Movie.findByPk(movieId,{include:['Genre','actores']});
+       
+       await toDelete.removeActores(toDelete.actores);
+      await toDelete.destroy();
+       res.redirect('/movies')
+   } catch (error) {
+       res.send('Oopss direccion equivocada');
+       console.log(error)
+   }
+}
 
 }
 
