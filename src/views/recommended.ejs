@@ -8,29 +8,39 @@
     <link rel="stylesheet" href="/stylesheets/style.css">
 
 </head>
-
-<body>
+ 
+  <body>
 
       <!--   estoy incluyendo un header-->
       <%-include('partials/header')%>
-     <!--   estoy incluyendo un header-->
+      <!--   estoy incluyendo un header-->
     
      <!-- recomendaciones -->
- <div class="main"> 
-     <h1> Recomendaciones</h1>
-        <ul>
-            <%for (let i=0; i<movies.length; i++){ %>
+     <div class="main"> 
+           <h1> Recomendaciones </h1>
+
+      
+           <ul>
+                <%for (let i=0; i<movies.length; i++){ %>
                 <li>
                     <a href="/movies/detail/<%=movies[i].id%> "> 
                     <%= movies[i].title %> </a> 
                 </li>
-            <% } %>
-        </ul>
+                <% } %>
+          </ul>
               
           
+         </div>
+      
+      
+          <!--   estoy incluyendo un footer-->
+           <div class="footer">  
+           <%-include('partials/footer/')%>
+           </div>
+          <!--   estoy incluyendo un footer--> 
 
-     <!--   estoy incluyendo un header-->
-     <%-include('partials/footer')%>
-     <!--   estoy incluyendo un header-->
-</body>
+    
+        
+    </body>
+
 </html>

@@ -9,77 +9,74 @@
 
 </head>
 
-<body>
+  <body>
     <!--   estoy incluyendo un header-->
     <%-include('partials/header')%>
     <!--   estoy incluyendo un header-->
     
     <!-- product detail -->
     
-   <div class="main"> 
-    <h2 class="title">Agrega tu película</h2>
-    <div class="form_center"> 
-      <main class="form">
+      <div class="main"> 
+        <h2 class="title">Agrega tu película</h2>
+         <div class="form_center"> 
+           <main class="form">
        
-          <form action="/movies/create" method="POST"><br>
-        <div>
-            <label for="title">Título</label><br>
-            <input type="text" name="title"><br>
-        </div>
+            <form action="/movies/create" method="POST"><br>
+             <div>
+              <label for="title">Título</label><br>
+              <input type="text" name="title"><br>
+             </div>
        
-        <div>
-            <label for="rating">Rating</label><br>
-            <input type="text" name="rating"><br>
-        </div>
+             <div>
+             <label for="rating">Rating</label><br>
+             <input type="text" name="rating"><br>
+             </div>
         
-        <div> 
-            <label for="awards">Premios</label><br>
-            <input type="number" name="awards"><br>
-        </div>
+              <div> 
+              <label for="awards">Premios</label><br>
+              <input type="number" name="awards"><br>
+             </div>
         
-        <div>
-            <label for="release_date">Estreno</label><br>
-            <input type="date" name="release_date"><br>
-        </div>
+              <div>
+              <label for="release_date">Estreno</label><br>
+              <input type="date" name="release_date"><br>
+             </div>
         
-        <div>
-            <label for="length">Duración</label><br>
-            <input type="text" name="length"><br>
-        </div>
+             <div>
+              <label for="length">Duración</label><br>
+              <input type="text" name="length"><br>
+             </div>
         
-        <div>
-            <label for="genre_id">Genero</label><br>
-            <select name="genre_id">
-            <%generos.forEach(genero => { %>
-                <option value="<%=genero.id%>"><%=genero.name %></option>
-                <% })%> 
-            </select><br>
-        </div>
+             <div>
+                 <label for="genre_id">Genero</label><br>
+                 <select name="genre_id">
+                   <%generos.forEach(genero => { %>
+                   <option value="<%=genero.id%>"><%=genero.name %></option>
+                    <% })%> 
+                </select><br>
+             </div>
 
-        <div>
-            <label for="actores">Actores</label><br>
-            <select name="actores" multiple>
-            <%actores.forEach(actor => { %>
-                <option value="<%=actor.id%>"><%=actor.first_name %><%=actor.last_name %>
-                </option>
-                <% })%> 
-            </select><br>
-        </div>
-        
-        
-        
-     
-        
-              
+              <div>
+                 <label for="actores">Actores</label><br>
+                 <select name="actores" multiple>
+                      <%actores.forEach(actor => { %>
+                       <option value="<%=actor.id%>"><%=actor.first_name %><%=actor.last_name %>
+                       </option>
+                       <% })%> 
+                  </select><br>
+             </div>
+           
         <button class="button-detail" type="submit"> Crear </button>
         <button class="button-detail"type="button"> Modificar </button>
-    </div>
+     <!-- -->
      </form> 
     </main>
 
     </div>
-     <!--   estoy incluyendo un header-->
-     <%-include('partials/footer')%>
-     <!--   estoy incluyendo un header-->
+      <!--   estoy incluyendo un footer-->
+      <div class="footer">  
+        <%-include('partials/footer')%>
+        </div>
+    <!--   estoy incluyendo un footer--> 
 </body>
 </html>

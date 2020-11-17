@@ -104,7 +104,7 @@ store: async(req,res)=>{
  try{ let newMovie= await Movie.create(req.body)
    await newMovie.addActores(req.body.actores)
 
-   res.redirect('/movie');
+   res.redirect('/movies');
    }catch(error) {
    console.log(error)
    }  },
