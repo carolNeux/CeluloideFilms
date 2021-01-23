@@ -10,7 +10,6 @@ router.get('/', moviesController.all);
 router.get('/detail/:id', moviesController.detail);
 router.get('/new', moviesController.newMovie);
 router.get('/recommended',moviesController.recommended);
-router.get('/search', moviesController.searchView);
 router.post('/search', moviesController.search);
 
 //____ Sigo con create_____//

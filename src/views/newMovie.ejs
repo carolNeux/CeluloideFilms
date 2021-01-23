@@ -4,38 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Celuloide Films</title>
     <link rel="stylesheet" href="/stylesheets/style.css">
-
 </head>
 
-<body>
-
-    <!--   estoy incluyendo un header-->
-    <%-include('partials/header')%>
-    <!--   estoy incluyendo un header-->
-    
-    <!-- ultimos estrenos -->
-
-    <div class="main"> 
-
-        <h1>Estrenos de la semana</h1>
-        <ul>
-            <%for (let i=0; i<movies.length; i++){ %>
+<body> 
+  <%-include('partials/header')%>
+    <main class="main"> 
+      <div >
+         <h1>Estrenos de la semana</h1>
+          <ul>
+             <%for (let i=0; i<movies.length; i++){ %>
                 <li>
-                    <a href="/movies/detail/<%=movies[i].id%> "> 
+                    <a class="peli" href="/movies/detail/<%=movies[i].id%> "> 
                     <%= movies[i].title %> </a> 
                 </li>
-            <% } %>
-        </ul>
-           
-        
-
-    </div> 
-        <!--   estoy incluyendo un footer-->
-            <div class="footer">  
+             <% } %>
+          </ul>
+       </div> 
+    </main>  
+    
+     <!--  Footer -->  
+     <div class="footer">  
             <%-include('partials/footer')%>
-            </div>
-        <!--   estoy incluyendo un footer-->  
+     </div>
 </body>
 </html>

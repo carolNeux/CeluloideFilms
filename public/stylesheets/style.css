@@ -1,12 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 body {
   background-color: RGB(216, 191, 216);
   padding: 50px;
   font: 16px 'Lucida Grande', Helvetica, Arial, sans-serif;
   color: indigo;
+  position: relative;
+  padding-bottom: 58px;
+  min-height: 100vh;
 }
 
 .main {
-  padding-top: 6rem;
+  padding-top: 10rem;
   width: 80%;
   padding-left: 15rem;
   text-decoration: none;
@@ -24,23 +32,41 @@ p {
 ul {
   list-style-type: none;
 }
-
+.movieList {
+  padding: 20px;
+}
+.peli {
+  font-size: 20px;
+  color: indigo;
+  text-decoration: none;
+}
+.peli:hover {
+  color: hotpink;
+}
+.found {
+  background-color: red;
+}
 .genreAside {
-  color: white;
+  color: whitesmoke;
   margin-left: 20px;
   font-style: italic;
 }
+
 button {
   color: 216, 191, 216;
 }
 .button-detail {
   display: flex;
   width: 40%;
-  margin: 10px;
+  font-size: 18px;
+  margin: 15px;
   border-radius: 20px;
   text-align: center;
   justify-content: center;
   background-color: #333;
+  color: RGB(216, 191, 216);
+}
+.button-detail-text {
   color: RGB(216, 191, 216);
 }
 .button-detail:hover {
@@ -65,15 +91,66 @@ button {
   cursor: pointer;
 }
 
+.detail-box-container {
+  padding: 10px;
+  border-radius: 10px;
+}
+.title {
+  padding-bottom: 10px;
+  color: indigo;
+}
+h1 {
+  color: whitesmoke;
+  padding-bottom: 30px;
+}
 .footer {
-  height: 70%;
+  height: 15%;
   left: 0;
   bottom: 0;
   width: 100%;
   text-align: center;
+  margin-top: 200px;
+  position: fixed;
+  bottom: 0%;
+  width: 100%;
 }
 
 a {
-  color: indigo;
   text-decoration: none;
+}
+
+/**movie search*/
+.movies_box {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  box-shadow: rgba(0, 0, 0, 0.02);
+}
+.movie_item {
+  width: 100%;
+  margin: 20px;
+  border-radius: 5px;
+  overflow: hidden;
+  border-top: 3px solid #292929;
+}
+.movie_item img {
+  width: 80%;
+}
+
+.movie_title {
+  margin: 5px;
+  font-size: 17px;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #3a3a3a;
+}
+.movie_item:hover {
+  transform: translateY(-10px);
+  transition: all ease 0.2s;
+}
+.movie_item h3:hover {
+  background-color: #f9bc50;
+  color: white;
+  border-radius: 10px;
 }

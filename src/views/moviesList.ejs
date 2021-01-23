@@ -17,19 +17,18 @@
     
        <div class="main"  >
         <h1>Listado de Películas</h1>
-        <ul>
+        <ul class="movieList">
             <%for (let i=0; i<movies.length; i++){ %>
-                <li>
-                    <a  href="/movies/detail/<%=movies[i].id%> "> 
-                    <%= movies[i].title %> </a>
-                   
-                    <% if(movies[i].Genre != undefined ){ %>
+                 <li >
+                     <a class="peli" href="/movies/detail/<%=movies[i].id%> "> 
+                     <%= movies[i].title %> </a>
+                 </li>
+                 <li >  <% if(movies[i].Genre != undefined ){ %>
                         <span class="genreAside"> 
                         <%= movies[i].Genre.name %></span>
                         <% }  %>   
-                   
-                </li>
-            <% } %>
+                 </li>
+             <% } %>
         </ul>
        </div>
 

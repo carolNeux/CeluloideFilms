@@ -1,10 +1,22 @@
-.footer {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+footer {
   background-color: hotpink;
-  padding: 0.5rem 0;
   text-align: center;
   color: whitesmoke;
-  margin-top: 2rem;
   width: 100%;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: baseline;
+}
+.b {
+  padding-left: 15px;
 }
 
 .menu-icon {
@@ -12,9 +24,7 @@
 }
 
 .logo-github {
-  width: 2rem;
-  padding-right: 15px;
-  padding-left: 15px;
+  width: 1rem;
 }
 
 @media only screen and (max-width: 767px) {

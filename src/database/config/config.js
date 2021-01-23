@@ -10,7 +10,7 @@ module.exports ={
       paranoid:true
     },
 
-    "port": "8889"
+    "port": "3306"
   },
   "test": {
     "username": "root",
