@@ -10,35 +10,34 @@
 
 <body>
     <%-include('partials/header')%>
-   
     <main> 
       <div class="main"> 
-      
         <div class="form_center"> 
           <div class="form">
-            <h2 class="title">Edita tu película</h2>
-            <form action="/movies/update/<%=toEdit.id%>" method="POST"><br>
-              <div>
-                 <label for="title">Título</label><br>
-                 <input class="input-size" type="text" name="title" value="<%=toEdit.title%>" ><br>
-              </div>
-              <div>
+          
+               <h2 class="title">Edita tu película</h2>
+               <form action="/movies/update/<%=toEdit.id%>" method="POST"><br>
+                  <div>
+                  <label for="title">Título</label><br>
+                  <input class="input-size" type="text" name="title" value="<%=toEdit.title%>" ><br>
+                  </div>
+                   <div>
                   <label for="rating">Rating</label><br>
                   <input class="input-size" type="text" name="rating" value="<%toEdit.rating%>" > <br>
-              </div>
-              <div> 
-                 <label for="awards">Premios</label><br>
-                 <input class="input-size" type="number" name="awards" value="<%toEdit.awards%>" ><br>
-              </div>
-              <div>
-                 <label for="release_date">Estreno</label><br>
-                 <input class="input-size" type="date" name="release_date" ><br>
-              </div>
-              <div>
-                 <label for="length">Duración</label><br>
-                 <input class="input-size" type="text" name="length" value="<%toEdit.length%>" ><br>
-              </div>
-              <div>
+                  </div>
+                  <div> 
+                  <label for="awards">Premios</label><br>
+                  <input class="input-size" type="number" name="awards" value="<%toEdit.awards%>" ><br>
+                  </div>
+                  <div>
+                  <label for="release_date">Estreno</label><br>
+                  <input class="input-size" type="date" name="release_date" ><br>
+                  </div>
+                  <div>
+                  <label for="length">Duración</label><br>
+                  <input class="input-size" type="text" name="length" value="<%toEdit.length%>" ><br>
+                  </div>
+                  <div>
                   <label for="genre_id">Genero</label><br>
                   <select class="input-size" name="genre_id" id=""> <%generos.forEach(genero => { %> <%if(toEdit.GenreId ===genero.id) { %>
                      <option value="<%=genero.id%>" selected><%=genero.name %> </option>
@@ -47,10 +46,10 @@
                       <%}%>
                       <%})%>
                    </select><br>
-              </div>
-              <div>
-                   <label for="actores">Actores</label><br>
-                   <select class="input-size" name="actores" multiple>
+                  </div>
+                  <div>
+                     <label for="actores">Actores</label><br>
+                     <select class="input-size" name="actores" multiple>
                         <%actores.forEach(actor => { %>
                         <% if (toEdit.actores.some(actoresPelicula => actoresPelicula.id == actor.id)){%>
                         <option value="<%=actor.id%>" selected><%=actor.first_name +" "+actor.last_name %></option>
@@ -58,19 +57,17 @@
                         <option value="<%=actor.id%>"><%=actor.first_name %> + ' '+<%=actor.last_name %> </option>  
                         <%}%>
                         <% })%> 
-                  </select><br>
-              </div>
-                <button class="button-detail"type="submit"> Modificar </button>
-            </form> 
-        </div>
-     </div>
-    </div>
-    </main>
-
- <!------  estoy incluyendo un footer ----->
+                     </select><br>
+                    
+                  </div>
+                  <button class="button-detail"type="submit"> Modificar </button>
+               </form> 
+            </div>
+         </div>
+      </div>
+   </main>
    <div class="footer">  
-    <%-include('partials/footer')%>
-    </div>
- <!------  fin del footer -----> 
+   <%-include('partials/footer')%>
+   </div>
 </body>
 </html>

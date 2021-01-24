@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celuloide Films</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+	<header>
+  <%- include('partials/header') %>
+	</header>  
+		<div class="error"> 
+    <h2>Los campos no pueden estar vacios!</h2>
+    </div>
+      <script>
+        function redirect() {
+        	location.href="/movies";
+        }
+        setTimeout("redirect()", 3000);
+    </script>       
+	</body>
+</html> 

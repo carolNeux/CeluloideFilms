@@ -6,23 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Celuloide FIlms</title>
     <link rel="stylesheet" href="/stylesheets/style.css">
-
 </head>
-  <body>
-      <%-include('partials/header')%>
-     <main class="main"> 
+    <body>
+        <%-include('partials/header')%>
+        <main class="main"> 
            <h1> Recomendaciones </h1>
-           <div  > 
-           <ul> <%for (let i=0; i<movies.length; i++){ %>
-                <li>
+           <div> 
+                <ul> <%for (let i=0; i<movies.length; i++){ %>
+                    <li>
                     <a class="peli" href="/movies/detail/<%=movies[i].id%> "> 
                     <%= movies[i].title %> </a> 
-                </li>
-                <% } %>
-          </ul>
-        </div>
-    <div class="footer">  
-        <%-include('partials/footer/')%>
-    </div>     
- </body>
+                    </li>
+                    <% } %>
+                </ul>
+            </div>
+        <div class="footer">  
+        <%-include('partials/footer')%>
+        </div>    
+    </body>
 </html>

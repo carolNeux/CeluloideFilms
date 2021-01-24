@@ -1,39 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-    
- <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Celuloide</title>
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Celuloide</title>
     <link rel="stylesheet" href="/stylesheets/create.css">
- </head>
-
-    <body>    
-       <%-include('partials/header')%>
-       <main class="detail-box-container"> 
-       <div class="main"> 
-         <div class="form">   
-           <h1> Detalle de Película</h1>
-              <h2 class="title"><%=movies.title%></h2>
-               <ul>
-                 <li>El rating es <%=movies.rating%> </li><br>
-                 <li>Ganó <%=movies.awards%> premios</li><br>
-                 <li>Su duración es de <%=movies.length%></li><br>
-                 <li class="tramposa">Fue lanzada <%=movies.release_date%></li><br>
-               </ul>  
-               <div class="boton">  
-                 <button class="button-detail"> <a  class="button-detail-text" href="/movies/update/<%=movies.id%>">Modificar</a> </button>
-                  <form action="/movies/delete/<%=movies.id%>" method="POST">  
-                 <button class="button-detail" type="submit"> Borrar </button>
-              </div>  
-            </form>
+   </head>
+   <body>    
+      <%-include('partials/header')%>
+         <main class="detail-box-container"> 
+         <div class="main"> 
+            <h1> Detalle de Película</h1>
+            <div class="form">   
+               <h2 class="title"><%=movies.title%></h2>
+                  <ul>
+                     <li>El rating es <%=movies.rating%> </li><br>
+                     <li>Ganó <%=movies.awards%> premios</li><br>
+                     <li>Su duración es de <%=movies.length%></li><br>
+                     <li class="tramposa">Fue lanzada <%=movies.release_date%></li><br>
+                  </ul>  
+            <div class="boton">  
+               <button class="button-detail"> <a  class="button-detail-text" href="/movies/update/<%=movies.id%>">Modificar</a> </button>
+               <form action="/movies/delete/<%=movies.id%>" method="POST">  
+               <button class="button-detail" type="submit"> Borrar </button>
+             </div>  
+           </form>
          </div> 
-       </div>
-      </main>
-<!------  estoy incluyendo un footer ----->
- <div class="footer">  
-   <%-include('partials/footer')%>
-   </div>
-<!------  fin del footer -----> 
+         </div>
+         </main>
+         <div class="footer">  
+         <%-include('partials/footer')%>
+         </div>
    </body>
 </html>

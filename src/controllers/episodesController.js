@@ -2,13 +2,13 @@
 const {Episode} = require('../database/models')
 
 module.exports = {
-     all: async(req, res) =>{
-        try {
-           const episodesJson = await Episode.findAll()
-           const episodesJs = await episodesJson.json()
-           res.json(episodeJs)
-         } catch(error) {
-            console.log(error);
-         }   
-     }
+   all: async(req, res) =>{
+      try {
+         const episodesJson = await Episode.findAll()
+         const episodesJs = await episodesJson.json()
+         res.json(episodeJs)
+      }  catch(error) {
+         console.log(error);
+      }   
+   }
 }

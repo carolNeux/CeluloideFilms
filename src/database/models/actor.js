@@ -7,15 +7,14 @@ module.exports = (sequelize, DataTypes) => {
        last_name:DataTypes.STRING,
        rating:DataTypes.DECIMAL,
        favorite_movie_id:DataTypes.INTEGER.UNSIGNED,
- });
+    });
      Actor.associate = (models=>{
-     Actor.belongsToMany(models.Movie,{
+        Actor.belongsToMany(models.Movie,{
         as:'peliculas',
         through:'actor_movie'
-     
+        });
     });
-   });
-   { timestamps: false 
-   }
+    { timestamps: false 
+    }
    return Actor;
 }

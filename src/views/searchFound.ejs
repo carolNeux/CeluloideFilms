@@ -5,33 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Celuloide Films</title>
-    
     <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 
 <body>
-    <%-include('partials/header')%>
-   <main class="main">
-     <div>
-       <h1>Esta es la pelicula que buscabas</h1>
-      <section> 
-          <% movies.forEach(movie => { %>
-            <div class="found">
-              <a  class="peli" href="/movies/detail/<%= movie.id %>">
-                <h2> <%= movie.title %></h2>
-              </a>
-             
-            </div>             
-          <% }) %>
-       </section>
+	<%-include('partials/header')%>
+	<main class="main">
+    	<div>
+				<% if(movies != '') { %>
+      	<h1>Esta es la pelicula que buscabas</h1>
+      		<section> 
+					<% movies.forEach(movie => { %>
+					<div class="found">
+					<a class="peli" href="/movies/detail/<%= movie.id %>">
+					<h2> <%= movie.title %></h2>
+					</a>
+					</div>             
+				  <% })} else {%> 
+					<h1> No hemos encontrado la pelicula buscada </h1>
+					<% } %> 
+       		</section>
       </div>
-      </main>
-
-        
-    <!--   estoy incluyendo un footer-->
+    </main>
     <div class="footer">  
       <%-include('partials/footer')%>
-      </div>
-  <!--   estoy incluyendo un footer-->    
-</body>
+    </div>
+	</body>
 </html>

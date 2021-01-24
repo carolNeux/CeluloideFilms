@@ -8,8 +8,9 @@ module.exports = (sequelize, DataTypes) => {
        release_dte:DataTypes.DATEONLY, 
        rating:DataTypes.DECIMAL,
        season_id:DataTypes.INTEGER
-   }, {                            
+   }, 
+    {                            
     timestamps: false
-   })
+    })
    return Episode
 }

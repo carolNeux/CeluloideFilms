@@ -1,42 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-    
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    
-    <link rel="stylesheet" href="/stylesheets/style.css">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Celuloide Films</title>
+		<link rel="stylesheet" href="/stylesheets/style.css">
+	</head>
 
-</head>
-
-<body>
-    <!--   estoy incluyendo un header-->
-    <%-include('partials/header')%>
-    <!--   estoy incluyendo un header-->
-    
-       <div class="main"  >
-        <h1>Listado de Películas</h1>
-        <ul class="movieList">
-            <%for (let i=0; i<movies.length; i++){ %>
-                 <li >
-                     <a class="peli" href="/movies/detail/<%=movies[i].id%> "> 
-                     <%= movies[i].title %> </a>
-                 </li>
-                 <li >  <% if(movies[i].Genre != undefined ){ %>
-                        <span class="genreAside"> 
-                        <%= movies[i].Genre.name %></span>
-                        <% }  %>   
-                 </li>
-             <% } %>
-        </ul>
-       </div>
-
-    <!--   estoy incluyendo un footer-->
-        <div class="footer">  
-        <%-include('partials/footer')%>
-        </div>
-    <!--   estoy incluyendo un footer--> 
-    
-</body>
+	<body>
+		<%-include('partials/header')%>
+	 		<div class="main"  >
+				<h1>Listado de Películas</h1>
+					<ul class="movieList">
+					<%for (let i=0; i<movies.length; i++){ %>
+				 		<li >
+					 		<a class="peli" href="/movies/detail/<%=movies[i].id%> "> 
+							<%= movies[i].title %> </a>
+				 		</li>
+						<li><% if(movies[i].Genre != undefined ){ %>
+						<span class="genreAside"> 
+						<%= movies[i].Genre.name %></span>
+						<% }  %>   
+				 		</li>
+			 			<% } %>
+					</ul>
+			   </div>
+	</body>
 </html>

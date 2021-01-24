@@ -44,8 +44,15 @@ ul {
   color: hotpink;
 }
 .found {
-  background-color: red;
+  font-size: 20px;
+  padding: 1rem;
+  color: indigo;
+  text-decoration: none;
 }
+.found:hover {
+  color: hotpink;
+}
+
 .genreAside {
   color: whitesmoke;
   margin-left: 20px;
@@ -104,12 +111,11 @@ h1 {
   padding-bottom: 30px;
 }
 .footer {
-  height: 15%;
   left: 0;
   bottom: 0;
   width: 100%;
   text-align: center;
-  margin-top: 200px;
+
   position: fixed;
   bottom: 0%;
   width: 100%;
