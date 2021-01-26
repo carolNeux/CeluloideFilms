@@ -14,17 +14,17 @@
     	<div>
 				<% if(movies != '') { %>
       	<h1>Esta es la pelicula que buscabas</h1>
-      		<section> 
-					<% movies.forEach(movie => { %>
-					<div class="found">
-					<a class="peli" href="/movies/detail/<%= movie.id %>">
-					<h2> <%= movie.title %></h2>
-					</a>
-					</div>             
-				  <% })} else {%> 
-					<h1> No hemos encontrado la pelicula buscada </h1>
-					<% } %> 
-       		</section>
+      		<ul > 
+				<li>
+				<% movies.forEach(movie => { %>
+				<a class="peli" href="/movies/detail/<%= movie.id %>">
+				<%= movie.title %>
+				</a>
+				</li>	
+			</ul>
+			<% })} else {%> 
+			<h1> No hemos encontrado la pelicula buscada </h1>
+			<% } %> 
       </div>
     </main>
     <div class="footer">  
