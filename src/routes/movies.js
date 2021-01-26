@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var validation = require('../middlewares/validation');
 
 
 const moviesController = require('../controllers/moviesController')
@@ -13,11 +14,11 @@ router.post('/search', moviesController.search);
 
 //____ Create_____//
 router.get('/create',moviesController.create);
-router.post('/create', moviesController.store);
+router.post('/create', validation.validacion, moviesController.store);
 
-//____ Update_____//
+//____ Modificar Pelicula - Update _____//
 router.get('/update/:id', moviesController.update); //---modificar
-router.post('/update/:id', moviesController.change);
+router.post('/update/:id', validation.validacion, moviesController.change);
 
 //____ Sigo con  borrar//
 

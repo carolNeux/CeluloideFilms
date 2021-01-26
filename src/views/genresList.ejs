@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Celuloide Films</title>
+		<link rel="stylesheet" href="/stylesheets/style.css">
+	</head>
+
+	<body>
+		<%-include('partials/header')%>
+	 		<div class="main"  >
+				<h1>Listado de Películas por Genero</h1>
+					 <h2> <%= genre.name %></h2>
+					<ul class="movieList">
+                       <%for (let i=0; i<movies.length; i++){ %>
+                        <% if (movies[i].GenreId === genre.id) { %>
+				 		<li >
+					 		<a class="peli" href="/movies/detail/<%=movies[i].id%> "> 
+							<%= movies[i].title %> </a>
+                         </li> 
+                        <% } %>
+						<li><% if(movies[i].Genre != undefined ){ %>
+						<span class="genreAside"> 
+						<%= movies[i].Genre.name %></span>
+						<% }  %>   
+				 		</li>
+			 			<% } %>
+					</ul>
+			   </div>
+	</body>
+</html>

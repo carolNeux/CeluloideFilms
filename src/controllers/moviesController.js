@@ -1,8 +1,7 @@
 const db= require('../dataBase/models');
 const {Movie, Genre, Actor} = require('../database/models')
 const{Op}=require('sequelize');
-
-
+const {validationResult} = require('express-validator');
 
 module.exports = {
   all: async(req, res) =>{
@@ -16,14 +15,17 @@ module.exports = {
      },
    detail: async(req,res)=>{
       try {
-           let movies = await Movie.findByPk(req.params.id)
-           include:[{association:'Genre'},{association:'Actor'} ]
-           res.render('movieDetail', {movies})
+           let movie = await Movie.findByPk(req.params.id, {
+              include:['Genre','actores']
+           })
+           let genres = await Genre.findAll();
+           let actores = await Actor.findAll();
+          res.render('movieDetail', {movie, actores, genres})
+          //res.json(movie);
          } catch(error){
             res.send('Hubo un error');
             console.log(error)
         }  
-           
      },
      newMovie: async(req,res)=>{
       try{ const movies = await Movie.findAll(
@@ -129,9 +131,16 @@ module.exports = {
 
    store: async(req,res)=>{
       try{ 
-         let newMovie= await Movie.create(req.body)
-         await newMovie.addActores(req.body.actores)
-         res.redirect('/movies');
+         let results = validationResult(req)
+            if(results.isEmpty()){
+               let newMovie= await Movie.create(req.body)
+               await newMovie.addActores(req.body.actores)
+               res.redirect('/movies');
+            } else {
+               const generos = await Genre.findAll()
+               const actores = await Actor.findAll()
+               res.render('createMovie', {generos,actores, errors: results.errors, old: req.body});
+            }
       }  catch(error){
          res.send('Hubo un error');
          console.log(error)
@@ -153,12 +162,23 @@ module.exports = {
    
    change: async(req,res)=>{   
       try{
-         const movieId =req.params.id;
-         const changedMovie = await Movie.findByPk(movieId,{include:['Genre','actores']})
-         await changedMovie.removeActores(changedMovie.actores);
-         await changedMovie.addActores(req.body.actores);
-         await changedMovie.update(req.body)
-         res.redirect(movieId)
+         let results = validationResult(req)
+         if(results.isEmpty()){
+            const movieId =req.params.id;
+            const changedMovie = await Movie.findByPk(movieId,{include:['Genre','actores']})
+            await changedMovie.removeActores(changedMovie.actores);
+            await changedMovie.addActores(req.body.actores);
+            await changedMovie.update(req.body)
+            res.redirect(`/movies/detail/${movieId}`)
+         } else {
+            const movieId =req.params.id;
+            const toEdit = await Movie.findByPk(movieId,{include:['Genre','actores']});
+            const generos = await Genre.findAll()
+            const actores = await Actor.findAll()
+            res.render('updateMovie',{toEdit, generos, actores, errors: results.errors, old: req.body})
+         console.log(results);
+         }
+
       } catch(error){
          res.redirect('/movies');
          console.log(error)

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Celuloide Films</title>
-    <link rel="stylesheet" href="/stylesheets/create.css">
+    <link rel="stylesheet" href="/stylesheets/updateMovie.css">
 </head>
 
 <body>
@@ -15,41 +15,47 @@
         <div class="form_center"> 
           <div class="form">
           
-               <h2 class="title">Edita tu película</h2>
-               <form action="/movies/update/<%=toEdit.id%>" method="POST"><br>
+               <h2 class="title">Edita tu película <br><%=toEdit.title%> </h2>
+          
+               <form action="/movies/update/<%=toEdit.id%>" method="POST">
+                     <% if (typeof errors != 'undefined') {  %>
+                     <% errors.forEach(error => { %>
+                     <p><%= error.msg %> </p>
+                     <% }) %>
+                     <% } %>
                   <div>
-                  <label for="title">Título</label><br>
-                  <input class="input-size" type="text" name="title" value="<%=toEdit.title%>" ><br>
+                  <label for="title">Título</label>
+                  <input class="input-size" type="text" name="title" value="<%= typeof old != 'undefined' ? old.title : toEdit.title %>">
                   </div>
                    <div>
-                  <label for="rating">Rating</label><br>
-                  <input class="input-size" type="text" name="rating" value="<%toEdit.rating%>" > <br>
+                  <label for="rating">Rating</label>
+                  <input class="input-size" type="text" name="rating" value="<%= typeof old != 'undefined' ? old.rating : toEdit.rating %>" min="1" max="10" step="0.1"> 
                   </div>
                   <div> 
-                  <label for="awards">Premios</label><br>
-                  <input class="input-size" type="number" name="awards" value="<%toEdit.awards%>" ><br>
+                  <label for="awards">Premios</label>
+                  <input class="input-size" type="number" name="awards" value="<%= typeof old != 'undefined' ? old.awards : toEdit.awards %>"  >
                   </div>
                   <div>
-                  <label for="release_date">Estreno</label><br>
-                  <input class="input-size" type="date" name="release_date" ><br>
+                  <label for="release_date">Estreno</label>
+                  <input class="input-size" type="date" name="release_date" value="<%= typeof old != 'undefined' ? old.release_date : toEdit.release_date %>">
                   </div>
                   <div>
-                  <label for="length">Duración</label><br>
-                  <input class="input-size" type="text" name="length" value="<%toEdit.length%>" ><br>
+                  <label for="length">Duración</label>
+                  <input class="input-size" type="text" name="length" value="<%= typeof old != 'undefined' ? old.length : toEdit.length %>" >
                   </div>
                   <div>
-                  <label for="genre_id">Genero</label><br>
+                  <label for="genre_id">Genero</label>
                   <select class="input-size" name="genre_id" id=""> <%generos.forEach(genero => { %> <%if(toEdit.GenreId ===genero.id) { %>
                      <option value="<%=genero.id%>" selected><%=genero.name %> </option>
                       <% } else { %> 
                        <option value="<%=genero.id%>"><%=genero.name%></option> 
                       <%}%>
                       <%})%>
-                   </select><br>
+                   </select>
                   </div>
                   <div>
-                     <label for="actores">Actores</label><br>
-                     <select class="input-size" name="actores" multiple>
+                     <label for="actores">Actores</label>
+                     <select class="input-size" name="actores" multiple value="<%= typeof old != 'undefined' ? old.actores : toEdit.actores %>">
                         <%actores.forEach(actor => { %>
                         <% if (toEdit.actores.some(actoresPelicula => actoresPelicula.id == actor.id)){%>
                         <option value="<%=actor.id%>" selected><%=actor.first_name +" "+actor.last_name %></option>
@@ -57,7 +63,7 @@
                         <option value="<%=actor.id%>"><%=actor.first_name %> + ' '+<%=actor.last_name %> </option>  
                         <%}%>
                         <% })%> 
-                     </select><br>
+                     </select>
                     
                   </div>
                   <button class="button-detail"type="submit"> Modificar </button>
@@ -66,8 +72,6 @@
          </div>
       </div>
    </main>
-   <div class="footer">  
-   <%-include('partials/footer')%>
-   </div>
+  
 </body>
 </html>

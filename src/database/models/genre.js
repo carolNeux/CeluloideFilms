@@ -7,7 +7,10 @@ module.exports = (sequelize, DataTypes)=>{
         active:DataTypes.INTEGER
     });
     Genre.associate= models=>{
-        Genre.hasMany(models.Movie)
+        Genre.hasMany(models.Movie,
+            {as:"Movie"}
+            )
+
     };
     return Genre
 }

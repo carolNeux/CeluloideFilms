@@ -11,15 +11,93 @@ body {
 }
 main {
   width: 100%;
-  padding-top: 12rem;
-  padding-left: 20rem;
+  padding-top: 11rem;
+  padding-left: 30rem;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-items: center;
+  align-content: center;
+  border-radius: 15px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  width: 400px;
+  background-color: whitesmoke;
+}
+h1 {
+  padding-top: 1.4rem;
+  color: hotpink;
+}
+h2 {
+  padding-left: 1rem;
+  padding: 30px;
 }
 .form {
-  background-color: aliceblue;
-  width: 80%;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  box-sizing: border-box;
+  flex-direction: column;
+  text-align: center;
+  justify-items: center;
+  align-content: center;
+  border-radius: 15px;
+  width: 400px;
+  background-color: whitesmoke;
+}
+
+input {
+  border: none;
+  margin: 8px;
+  height: 1.5rem;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+.input-size {
+  width: 20rem;
+}
+.select {
+  color: red;
+}
+button {
+  color: 216, 191, 216;
+}
+.button-detail {
+  width: 40%;
+  height: 1.5rem;
+  margin: 10px 15px;
+  border-radius: 20px;
+  text-align: center;
+  justify-content: center;
+  background-color: #333;
+  color: RGB(216, 191, 216);
+}
+.button-detail:hover {
+  background-color: hotpink;
+  color: white;
+  cursor: pointer;
+}
+.footer {
+  height: 2rem;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  margin-top: 200px;
+  position: fixed;
+  bottom: 0%;
+  width: 100%;
+}
+
+/*****AGREGANDO LAS DIFERENCIAS CON DETAIL*****/
+h1 {
+  margin: 10px;
+}
+ul {
+  list-style-type: none;
+}
+.button-detail-text {
+  color: RGB(216, 191, 216);
+  text-decoration: none;
+}
+.tramposa {
+  margin-left: 10px;
 }

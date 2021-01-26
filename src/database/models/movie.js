@@ -1,5 +1,5 @@
 const {sequelize, DataTypes} = require('sequelize');
-const actor = require('./actor');
+const moment = require ('moment');
 
 module.exports = (sequelize, DataTypes) => {
     
@@ -7,7 +7,11 @@ module.exports = (sequelize, DataTypes) => {
        title:DataTypes.STRING,
        rating:DataTypes.INTEGER,
        awards:DataTypes.INTEGER,
-       release_date:DataTypes.DATEONLY,
+       release_date:{
+          type:DataTypes.DATEONLY,
+          get() {
+            return moment(this.getDataValue('release_date')).add(3, 'hours').format('YYYY-MM-DD');
+         }},
        length:DataTypes.INTEGER,
        genre_id:DataTypes.INTEGER
     });

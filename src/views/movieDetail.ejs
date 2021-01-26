@@ -4,7 +4,7 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Celuloide</title>
-    <link rel="stylesheet" href="/stylesheets/create.css">
+    <link rel="stylesheet" href="/stylesheets/movieDetail.css">
    </head>
    <body>    
       <%-include('partials/header')%>
@@ -12,16 +12,29 @@
          <div class="main"> 
             <h1> Detalle de Película</h1>
             <div class="form">   
-               <h2 class="title"><%=movies.title%></h2>
+               <h2 class="title"><%=movie.title%></h2>
                   <ul>
-                     <li>El rating es <%=movies.rating%> </li><br>
-                     <li>Ganó <%=movies.awards%> premios</li><br>
-                     <li>Su duración es de <%=movies.length%></li><br>
-                     <li class="tramposa">Fue lanzada <%=movies.release_date%></li><br>
+                     <% genres.forEach(genre=> { %>
+                        <% if (genre.id == movie.GenreId) {%>
+                           <li><strong>  Genero :  </strong> <a href="/genres/<%=genre.id%>" > <%=genre.name%> </a></li>  
+                        <% } %>
+                     <% }) %>
+                     <li><strong>El rating es </strong><%=movie.rating%> </li>
+                     <li><strong>Ganó </strong> <%=movie.awards%> premios</li>
+                     <li><strong>Su duración es de </strong><%=movie.length%> minutos</li>
+                     <li class="tramposa"><strong>Se estrenó el : </strong><%=movie.release_date%></li>
+                     <li><strong> Actuan en esta pelicula </strong></li>  
+                        <% actores.forEach(actor=> { %>
+                           <% if (movie.actores.some(movieActor => movieActor.id === actor.id) ){%>
+                            <li><a href="/actors/<%=actor.id%>"> <%=actor.first_name%> <%=actor.last_name%></a></li> 
+                        <% } %>
+                      <% }) %>
+
+                     
                   </ul>  
             <div class="boton">  
-               <button class="button-detail"> <a  class="button-detail-text" href="/movies/update/<%=movies.id%>">Modificar</a> </button>
-               <form action="/movies/delete/<%=movies.id%>" method="POST">  
+               <button class="button-detail"> <a  class="button-detail-text" href="/movies/update/<%=movie.id%>">Modificar</a> </button>
+               <form action="/movies/delete/<%=movie.id%>" method="POST">  
                <button class="button-detail" type="submit"> Borrar </button>
              </div>  
            </form>

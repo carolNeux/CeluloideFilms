@@ -16,46 +16,53 @@
          <div class="form_center"> 
            <div class="form"> </div>
            <h2 class="title">Agrega tu película</h2>
-             <form action="/movies/create" method="POST"><br>
+             <form action="/movies/create" method="POST">
+                <% if (typeof errors != 'undefined') {  %>
+                <% errors.forEach(error => { %>
+                <p><%= error.msg %> </p>
+                <% }) %>
+                <% } %>
                 <div>
-                 <label for="title">Título</label><br>
-                 <input class="input-size" type="text" name="title"><br>
+                 <label for="title">Título</label>
+                 <input class="input-size" type="text" name="title" value="<%= typeof old != 'undefined' ? old.title : "" %>">
                </div>
                <div>
-                 <label for="rating">Rating</label><br>
-                 <input class="input-size" type="text" name="rating"><br>
+                 <label for="rating">Rating</label>
+                 <input class="input-size" type="number" name="rating" min="1" max="10" step="0.1" value="<%= typeof old != 'undefined' ? old.rating : "" %>">
                </div>
                <div> 
-                 <label for="awards">Premios</label><br>
-                 <input class="input-size" type="number" name="awards"><br>
+                 <label for="awards">Premios</label>
+                 <input class="input-size" type="number" name="awards" value="<%= typeof old != 'undefined' ? old.awards : "" %>">
                </div>
                <div>
-                 <label for="release_date">Fecha de Estreno</label><br>
-                 <input class="input-size" type="date" name="release_date"><br>
+                 <label for="release_date">Estreno</label>
+                 <input class="input-size" type="date" name="release_date" value="<%= typeof old != 'undefined' ? old.release_date : "" %>">
                </div>
                <div>
-                 <label for="length">Duración</label><br>
-                 <input class="input-size" type="text" name="length"><br>
+                 <label for="length">Duración</label>
+                 <input class="input-size" type="number" name="length" value="<%= typeof old != 'undefined' ? old.length : "" %>">
                </div>
                <div>
-                 <label for="genre_id">Genero</label><br>
-                 <select class="input-size" name="genre_id">
+                 <label class="genero" for="genre_id">Genero</label>
+                 <select class="input-size" name="genre_id" value="<%= typeof old != 'undefined' ? old.genre_id : "" %>">
                    <%generos.forEach(genero => { %>
                    <option value="<%=genero.id%>"><%=genero.name %></option>
                     <% })%> 
-                 </select><br>
-               </div>
-               <div>
-                 <label for="actores">Actores</label><br>
-                  <select class="input-size" name="actores" multiple>
+                 </select>
+               </div><br>
+               <div class="actores">
+                 <label for="actores">Actores</label>
+                  <select class="input-size" name="actores" multiple value="<%= typeof old != 'undefined' ? old.actores : "" %>">
                       <%actores.forEach(actor => { %>
                        <option value="<%=actor.id%>"><%=actor.first_name %><%=actor.last_name %>
                        </option>
                        <% })%> 
-                  </select><br>
-                </div> 
+                  </select>
+                </div> <br>
         <button class="button-detail" type="submit"> Crear </button>
       </form> 
     </main>
+    
 </body>
+
 </html>
